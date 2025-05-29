@@ -26,3 +26,4 @@ La rédaction de ce programme a été faite par Kevin Glass, y compris la créat
 Merci au [Groupe LAPS](https://groupe-laps.org) pour sa collaboration et son soutien à ce projet !
 
 Toute ré-utilisation du contenu de ce cours est sujet à l'accord exprès et à l'écrit de Kevin GLASS.
+
