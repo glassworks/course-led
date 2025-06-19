@@ -30,7 +30,7 @@ Pourquoi Unity ?
 - C# et .Net peuvent être utilisés pour envoyer l'« état » de l'installation virtuelle au réseau.
 - L'aspect « jeu » de Unity permet également au Groupe Laps de créer des expériences interactives.
 
-**TODO: Insert links to Unity 2022.3.21 and a sample project.**
+La version de Unity à utiliser pour ce projet est 2022.3.21. [Télécharger la version ici](https://unity.com/fr/releases/editor/whats-new/2022.3.21).
 
 ## Abstraction
 
@@ -104,31 +104,22 @@ Ce message est envoyé à haute fréquence (40 fois par seconde) et contient les
 X octets : [payload compréssé avec GZip]
 ```
 
-Le payload, avant compression, se compose d'une série de quatuors RGBW: 
+Le payload, avant compression, se compose d'une série de sextuors : 
 
 ```
+2 octets: id de l'entité
 1 octet : R
 1 octet : V
 1 octet : B
 1 octet : W
-1 octet : R
-1 octet : V
-1 octet : B
-1 octet : W
-...
 ```
 
-Veuillez noter qu'il n'y a aucun indicateur du numéro d'entité dans cette charge utile.
-
-Pourquoi ?
-
-Afin de tirer le meilleur parti de la compression gzip, nous excluons les numéros d'entité qui pourraient nuire au facteur de compression. Une série d'entités désactivées ne ferait que générer une longue série de zéros qui pourraient être compressés au maximum par gzip.
-
-Cependant, nous devrons joindre à ce message `update` un tableau de correspondance précisant quel quatuor dans le payload correspond à quelle entité.
+Notez que la taille maximale d'un message UDP est d'environ 65 ko. Il est facile de dépasser cette limite.
+Par conséquent, pour une installation de grande envergure, la série de mises à jour peut être envoyée à l'aide de plusieurs messages UDP.
 
 ### Config
 
-Ce message, envoyé à une fréquence plus faible (une fois par seconde), détaille le format du message de mise à jour. Étant donné que l'installation n'est pas censée changer souvent, cette fréquence est suffisante.
+Ce message, envoyé à une fréquence plus faible (une fois par seconde), détaille d'information concernant les entités. Étant donné que l'installation n'est pas censée changer souvent, cette fréquence est suffisante.
 
 Le payload de ce message est composée d'une série de plages d'entités et de plages de positions dans le message `update`.
 
@@ -139,14 +130,14 @@ Ceci est optimisé en raison du fait que nous adressons souvent des plages d'ent
 
 Lors de la construction d'un message `update`, les entités sont écrites dans l'ordre croissant de leurs ID. L'entité 1 est donc écrite dans les 4 premiers octets du payload, l'entité 2 dans les 4 suivants, etc.
 
-Cependant, comme les numéros d'entités ne sont pas séquentiels, il y a un espace d'ID d'entités inutilisées (171 à 199). Pour économiser de la bande passante, l'entité 200 est donc écrite à la position disponible suivante, c'est-à-dire `171*4` (et non `200*4`).
+Cependant, comme les numéros d'entités ne sont pas séquentiels, il y a un espace d'ID d'entités inutilisées (171 à 199). Pour économiser de la bande passante, l'entité 200 est donc écrite à la position disponible suivante, c'est-à-dire `171*6` (et non `200*6`).
 
 Notre message de configuration est donc simplement une liste de plages. Une plage est décrit ainsi (8 octets, soit 4 `unsigned short`) :
 
 ```
-2 octets: numéro du quator dans le payload (début de la plage)
+2 octets: numéro du sextuor dans le payload (début de la plage)
 2 octets: numéro d'entité (début de la plage)
-2 octets: numéro du quator dans le payload (fin de la plage)
+2 octets: numéro du sextuor dans le payload (fin de la plage)
 2 octets: numéro d'entité (fin de la plage)
 ```
 
@@ -154,21 +145,21 @@ Dans l'exemple des araignées :
 
 ```
 // Plage 
-0    // quator dans update (début)
+0    // sextuor dans update (début)
 1    // numéro d'entité
-169  // quator dans update (fin)
+169  // sextuor dans update (fin)
 170  // numéro d'entité
 
 // Plage
-170    // quator dans update (début)
+170    // sextuor dans update (début)
 200    // numéro d'entité
-339    // quator dans update (fin)
+339    // sextuor dans update (fin)
 370    // numéro d'entité
 
 // etc
 ```
 
-En français : les quators 0 à 169 contiennent les données pour les entités 1 à 170; les quators 170 à 339 contiennent les données pour les entités 200 à 370.
+En français : les sextuors 0 à 169 contiennent les données pour les entités 1 à 170; les sextuors 170 à 339 contiennent les données pour les entités 200 à 370.
 
 Le message `config` est composé comme suit : 
 
