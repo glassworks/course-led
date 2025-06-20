@@ -24,6 +24,12 @@ Les objectifs de ce projet sont les suivants :
 - travailler au sein d'une équipe, identifier les compétences individuelles, répartir les tâches et assurer la progression d'un projet d'ingénierie.
 - apprendre les concepts fondamentaux des applications en réseau et être capable de créer une solution qui adhère aux protocoles standards de l'industrie.
 
+## Groupes
+
+Vous travaillerez en groupes de 4 personnes maximum.
+
+Veuillez indiquer ici les noms et prénoms de vos coéquipiers ici : [https://docs.google.com/spreadsheets/d/1Be6SVVQc-QLmtl_78UFlUNuQzcCwuI-lpj6r_QPtBmA/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1Be6SVVQc-QLmtl_78UFlUNuQzcCwuI-lpj6r_QPtBmA/edit?usp=sharing)
+
 
 ## Déroulé
 

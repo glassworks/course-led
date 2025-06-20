@@ -168,7 +168,8 @@ Le message `config` est composé comme suit :
 1 octet : 1       // valeur 1 indique message de type "config"
 1 octet : [ le numero de l'univers eHuB à adresser ]
 2 octets : [ le nombre de plages dans le message ]
-X * 8 octets : [ les plages ]
+2 octets : [taille du payload compressé (unsigned short)]
+X octets : [payload compréssé avec GZip]
 ```
 
 
