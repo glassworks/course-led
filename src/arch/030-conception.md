@@ -104,10 +104,10 @@ Ce message est envoyé à haute fréquence (40 fois par seconde) et contient les
 X octets : [payload compréssé avec GZip]
 ```
 
-Le payload, avant compression, se compose d'une série de sextuors : 
+Le payload, avant compression, se compose d'une série de sextuors (6 octets, composé de 5 valeurs) : 
 
 ```
-2 octets: id de l'entité
+2 octets: id de l'entité (`unsigned short`, ou `ushort`)
 1 octet : R
 1 octet : V
 1 octet : B
