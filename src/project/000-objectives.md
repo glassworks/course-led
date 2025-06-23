@@ -43,7 +43,7 @@ Votre défense consistera en ce qui suit :
 
 - la démonstration de la configurabilité de votre routeur logiciel (P1). Votre solution sera évaluée par rapport aux exigences énumérées de E1 à E10 dans le cahier des charges.
 
-- en démontrant la structure de votre code, la possibilité d'ajouter des modules ou des protocoles ultérieurement. Il vous sera demandé de faire une visite rapide de votre base de co
+- en démontrant la structure de votre code, la possibilité d'ajouter des modules ou des protocoles ultérieurement. Il vous sera demandé de faire une visite rapide de votre base de code.
 
 Votre groupe se verra attribuer un créneau horaire pour la démonstration de votre solution et la présentation de votre base de code.
 
@@ -52,7 +52,7 @@ Votre groupe se verra attribuer un créneau horaire pour la démonstration de vo
 L'écran LED est mis à votre disposition pendant le cours.
 
 Vous pouvez à tout moment envoyer des messages aux contrôleurs.
-Les détails concernant les contrôleurs, leurs adresses IP et leurs univers vous seront fournis pendant le cours.
+[Les détails concernant les contrôleurs, leurs adresses IP et leurs univers vous seront fournis ici](../arch/050-ecran-led.md).
 
 Attention ! Vous devez vous coordonner entre les groupes pour déterminer qui a accès à l'écran LED, car vous risquez de subir des interférences de la part d'autres groupes !
 

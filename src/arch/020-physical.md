@@ -50,8 +50,6 @@ Le BC216 est équipé d'une prise d'entrée Ethernet RJ45 et d'un serveur intern
 
 ![](../../img/physical-network.png)
 
-The BC216 also contains an internal admin panel allowing us to configure its network settings (for example, IP address, listening port, etc.).
-
 Le BC216 comprend également un panneau d'administration interne qui nous permet de configurer ses paramètres réseau (par exemple, l'adresse IP, le port d'écoute, etc.).
 
 Le [protocole ArtNet](https://en.wikipedia.org/wiki/Art-Net) permet d'envoyer des messages DMX512 via un réseau, en utilisant des messages UDP.

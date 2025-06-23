@@ -55,6 +55,13 @@ Le troisième quart suit le même schéma, commençant à 10100 et se terminant 
 
 Le tableau complet est disponible [dans ce fichier Excel](https://dev.glassworks.tech/courses/led/simulator-unity/-/raw/main/Assets/Scenes/Ecran/eHub/Ecran.xlsx).
 
+Pour se connecter à l'écran, il suffit de changer de réseau wifi :
+
+- SSID : `GLASS_RESEAUX`
+- Mot de passe : `networks`
+
+A noter, il y a un projecteur attaché à l'installation aussi, connecté au contrôler à `192.168.1.45`, qui ecoute sur le premier 3 canaux de l'univers `200`. Vous pouvez peut-être utiliser ce projecteur pour tester vos premiers envois vers l'installation.
+
 # Simulateur 3D - Unity
 
 Un exemple de projet Unity est fourni ici :
